@@ -142,7 +142,7 @@
             <option value="5">5 (Strongly Agree)</option>
         </select>
       </div>
-       <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#modal" id="submit">
+       <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#bestMatchModal" id="submit">
         Submit
       </button>
     </div>
@@ -159,11 +159,10 @@
         </button>
       </div>
       <div class="modal-body">
-        ...
+        
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
@@ -180,26 +179,65 @@
 // Capture the form inputs
 $("#submit").on("click", function(event) {
   event.preventDefault();
-  console.log("Button clicked");
-});
+  var newFriend={
+    name: $("#name").val().trim(),
+    photo: $("#photo").val().trim(),
+    scores:[parseInt(
+      $("#q1").val().trim(),
+      $("#q2").val().trim(),
+      $("#q3").val().trim(),
+      $("#q4").val().trim(),
+      $("#q5").val().trim(),
+      $("#q6").val().trim(),
+      $("#q7").val().trim(),
+      $("#q8").val().trim(),
+      $("#q9").val().trim(),
+      $("#q10").val().trim(),
+    )
+    ] 
+  }
+  console.log(typeof(newFriend.scores[0])); 
+  var currentURL = window.location.origin; 
+    $.post("/api/friends", newFriend, function(data){
+      var bestmatch = "Kathryn";
+      $("#name").val("");
+      $("#photo").val("")
+      $("#q1").val(""),
+      $("#q2").val(""),
+      $("#q3").val(""),
+      $("#q4").val(""),
+      $("#q5").val(""),
+      $("#q6").val(""),
+      $("#q7").val(""),
+      $("#q8").val(""),
+      $("#q9").val(""),
+      $("#q10").val("")
 
-  // function runFriendsQuery() {
-  //   var currentURL = window.location.origin; 
-  //   $.ajax({ url: currentURL + "/api/friends", method: "GET" })
-  //     .done(function(friendData) {
+    });
+   
 
-  //       console.log("------------------------------------");
-  //       console.log("URL: " + currentURL + "/api/friends");
-  //       console.log("------------------------------------");
-  //       console.log(friendData);
-  //       console.log("------------------------------------");
+     
 
-  //       for(var i=0; i< friendData.length; i++){
-  //         console.log(friendData[i]); 
-  //       }
-  //     });
-  // }
-  // runFriendsQuery(); 
+}); //closing on click function 
+
+runFriendsQuery(); 
+  function runFriendsQuery() {
+    var currentURL = window.location.origin; 
+    $.ajax({ url: currentURL + "/api/friends", method: "GET" })
+   
+
+        .then(function(friendData) {
+
+      for(var i=0; i< friendData.length; i++){
+          console.log(friendData[i]);
+          console.log("-------------------"); 
+        }
+
+
+    
+      });
+  }
+ 
 </script>
 
 </html>
