@@ -182,7 +182,7 @@ $("#submit").on("click", function(event) {
   var newFriend={
     name: $("#name").val().trim(),
     photo: $("#photo").val().trim(),
-    scores:[parseInt(
+    scores:[
       $("#q1").val().trim(),
       $("#q2").val().trim(),
       $("#q3").val().trim(),
@@ -193,19 +193,18 @@ $("#submit").on("click", function(event) {
       $("#q8").val().trim(),
       $("#q9").val().trim(),
       $("#q10").val().trim(),
-    )
     ] 
   }
   // console.log(typeof(newFriend.scores[0])); 
   var currentURL = window.location.origin; 
-    $.post("/api/friends", newFriend, function(res){
-      
+    $.post("/api/friends", newFriend, function(data){
+      console.log(data); 
       $('<img />').attr({
-                  'src': res.photo,
+                  'src': data.photo,
                   'alt': 'Always Sunny Charactter',
         }).appendTo(".modal-body");
-      $("#modalLabel").append("<h3>"+ res.name + "</h3>"); 
-
+      $("#modalLabel").append("<h3>"+ data.name + "</h3>");
+      
       
       $("#name").val("");
       $("#photo").val("")
@@ -219,8 +218,6 @@ $("#submit").on("click", function(event) {
       $("#q8").val(""),
       $("#q9").val(""),
       $("#q10").val("")
-      console.log("This is the best Match", bestMatch); 
-console.log("This is the lowest score", lowesstScore); 
    
     });
 }); //closing on click function 
