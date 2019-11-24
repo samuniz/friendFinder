@@ -18,7 +18,7 @@ module.exports = function (app){
       }
       totalArray.push(matchSubtraction); 
     }
-     console.log(totalArray); 
+     console.log(totalArray);   
 
      res.json(friendData[match])
      friendData.push(req.body);
