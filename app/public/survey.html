@@ -198,13 +198,13 @@ $("#submit").on("click", function(event) {
   }
   // console.log(typeof(newFriend.scores[0])); 
   var currentURL = window.location.origin; 
-    $.post("/api/friends", newFriend, function(data){
-      console.log(data); 
+    $.post("/api/friends", newFriend, function(res){
+      
       $('<img />').attr({
-                  'src': data.photo,
+                  'src': res.photo,
                   'alt': 'Always Sunny Charactter',
         }).appendTo(".modal-body");
-        $("#modalLabel").append(data.name); 
+      $("#modalLabel").append("<h3>"+ res.name + "</h3>"); 
 
       
       $("#name").val("");
@@ -219,7 +219,9 @@ $("#submit").on("click", function(event) {
       $("#q8").val(""),
       $("#q9").val(""),
       $("#q10").val("")
-
+      console.log("This is the best Match", bestMatch); 
+console.log("This is the lowest score", lowesstScore); 
+   
     });
 }); //closing on click function 
 

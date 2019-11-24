@@ -1,28 +1,43 @@
-var friendData = require('../data/friends'); 
+var friendData = require("../data/friends"); 
 
-module.exports = function (app){
-  app.get('/api/friends',  function(req, res){
+module.exports = function(app){
+  app.get("/api/friends",  function(req, res){
     res.json(friendData); 
   });
 
   app.post('/api/friends', function(req, res){
-    var userScores = req.body.scores; 
-    var totalArray= []; 
-    var match = 0; 
-    // var friendScore = friendData[i].score[j]; 
-    // console.log(friendData); 
-    for(var i = 0; i < friendData.length; i ++){
-       var matchSubtraction = 0
-      for(var j=0; j < userScores.length; j ++){
-        matchSubtraction += (Math.abs(friendData[i].scores[j] - parseInt(userScores[j])));
-      }
-      totalArray.push(matchSubtraction); 
-    }
-     console.log(totalArray);   
+    //variable that grabs my user score
+        var userScores = req.body; 
+    //variable that store the total of the user and friend score diference
+        var totalArray = []
 
-     res.json(friendData[match])
-     friendData.push(req.body);
-    //  console.log("new: " + JSON.stringify(req.body));
-  }); 
+// loop thru the friendData lenght
+    for(var i = 0
+      ; i < friendData.length; i ++){
+      // variable that stores the sum of the differences of the user score and the friend score
+      var difUserData = 0;
+        for(var j=0; j < userScores.length; j ++){
+          difUserData = Math.abs(userScores.scores[j] - friendData[i].scores[j]);
+    };
+
+    totalArray.push(difUserData); 
+    // console.log(totalArray);  
+  }
+  // Compare the totalArray and see each one is the smaller
+    if(totalArray.length === 0){
+      return -1;
+    }
+    var bestMatch = 0;
+    var lowesstScore = totalArray[0];
+    for (var i = 1; i < totalArray.length; i++) {
+      if (totalArray[i] < lowesstScore) {
+        bestMatch = i; 
+        lowesstScore = totalArray[i];
+        
+  }
+}
+console.log(bestMatch); 
+// res.json(bestMatch); 
+}); 
 
 }
