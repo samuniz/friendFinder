@@ -196,10 +196,10 @@ $("#submit").on("click", function(event) {
     )
     ] 
   }
-  console.log(typeof(newFriend.scores[0])); 
+  // console.log(typeof(newFriend.scores[0])); 
   var currentURL = window.location.origin; 
     $.post("/api/friends", newFriend, function(data){
-      var bestmatch = "Kathryn";
+      console.log(data); 
       $("#name").val("");
       $("#photo").val("")
       $("#q1").val(""),
@@ -214,29 +214,19 @@ $("#submit").on("click", function(event) {
       $("#q10").val("")
 
     });
-   
-
-     
-
 }); //closing on click function 
 
-runFriendsQuery(); 
-  function runFriendsQuery() {
-    var currentURL = window.location.origin; 
-    $.ajax({ url: currentURL + "/api/friends", method: "GET" })
-   
-
-        .then(function(friendData) {
-
-      for(var i=0; i< friendData.length; i++){
-          console.log(friendData[i]);
-          console.log("-------------------"); 
-        }
-
-
-    
-      });
-  }
+// // runFriendsQuery(); 
+// //   function runFriendsQuery() {
+// //     var currentURL = window.location.origin; 
+// //     $.ajax({ url: currentURL + "/api/friends", method: "GET" })
+// //         .then(function(friendData) {
+// //       for(var i=0; i< friendData.length; i++){
+// //           console.log(friendData[i]);
+// //           console.log("-------------------"); 
+// //         }
+//       });
+//   }
  
 </script>
 
