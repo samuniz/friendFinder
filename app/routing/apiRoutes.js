@@ -8,6 +8,8 @@ module.exports = function(app){
   app.post('/api/friends', function(req, res){
     //variable that grabs my user score
         var userData = req.body; 
+
+
     //variable that store the total of the user and friend score diference
         var totalArray = []
 
@@ -33,8 +35,15 @@ module.exports = function(app){
 // this variable run the index of smallest function referencing the total score array
    var bestMatchIndex = (indexOfSmallest(totalArray));
    console.log(friendData[bestMatchIndex]); 
+ 
+ //  add user input to friend Data 
+  friendData.push(userData);  
+
+  
+  //  the response is the object index that is lower
    res.json(friendData[bestMatchIndex]); 
+
    
 }); 
-
+  
 }

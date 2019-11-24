@@ -15,12 +15,18 @@
   <!-- Chosen -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.jquery.min.js"></script>
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Calistoga|Nunito&display=swap" rel="stylesheet">
 
 </head>
-​
-<body>
+​<header>
+    <img src="assets/images/header.png" alt="header">
+
+</header>
+<body id="survey">
     <div class="container">
-      <h2>Survey Questions</h2> 
       <hr>           
       <h3>About You</h3>
       <label for="name">Name (Required)</label>
@@ -31,7 +37,7 @@
       <h3>Question 1</h3> 
       <p>Your mind is always buzzing with unexplored ideas and plans.</p> 
       <select class="chosen-select" id="q1">
-          <option value="">Select an Option </option>
+          <option class="select" value="">Select an Option </option>
           <option value="1">1 (Strongly Disagree)</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -44,7 +50,7 @@
       <p>Generally speaking, you rely more on your experience than your imagination.
         </p>
         <select class="chosen-select" id="q2">
-            <option value="">Select an Option </option>
+            <option class="select" value="">Select an Option </option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -55,7 +61,7 @@
       <p>You find it easy to stay relaxed and focused even when there is some pressure.
         </p>
         <select class="chosen-select" id="q3">
-            <option value="">Select an Option </option>
+            <option class="select" value="">Select an Option </option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -66,7 +72,7 @@
       <p>You rarely do something just out of sheer curiosity.
         </p> 
         <select class="chosen-select" id="q4">
-            <option value="">Select an Option </option>
+            <option class="select" value="">Select an Option </option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -77,7 +83,7 @@
       <p>People can rarely upset you.
         </p>  
         <select class="chosen-select" id="q5">
-            <option value="">Select an Option </option>
+            <option class="select" value="">Select an Option </option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -88,7 +94,7 @@
       <p>It is often difficult for you to relate to other people’s feelings.
         </p>
             <select class="chosen-select" id="q6">
-                <option value="">Select an Option </option>
+                <option class="select" value="">Select an Option </option>
                 <option value="1">1 (Strongly Disagree)</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -100,7 +106,7 @@
       <h3>Question 7</h3> 
       <p>In a discussion, truth should be more important than people’s sensitivities.</p>
       <select class="chosen-select" id="q7">
-          <option value="">Select an Option </option>
+          <option class="select" value="">Select an Option </option>
           <option value="1">1 (Strongly Disagree)</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -112,7 +118,7 @@
       <p>You rarely get carried away by fantasies and ideas.
         </p>
         <select class="chosen-select" id="q8">
-            <option value="">Select an Option </option>
+            <option class="select" value="">Select an Option </option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -123,7 +129,7 @@
       <p>You think that everyone’s views should be respected regardless of whether they are supported by facts or not.
         </p>
         <select class="chosen-select" id="q9">Select an option 
-            <option value="">Select an Option </option>
+            <option class="select" value="">Select an Option </option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -134,7 +140,7 @@
       <p>You feel more energetic after spending time with a group of people.
         </p>
         <select class="chosen-select" id="q10">
-            <option value="">Select an Option </option>
+            <option class="select" value="">Select an Option </option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -142,9 +148,15 @@
             <option value="5">5 (Strongly Agree)</option>
         </select>
       </div>
-       <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#bestMatchModal" id="submit">
+      <br>
+       <button type="submit" class="btn btn-lg" data-toggle="modal" data-target="#bestMatchModal" id="submit">
         Submit
       </button>
+      <footer class="text-center" id="submit-footer">
+          <a href="/api/friends"> API Friends List|</button></a>
+          <a href="https://github.com/samuniz/friendFinder"> Git Hub Repo</button></a>
+      </footer> 
+      
     </div>
 
     
@@ -169,16 +181,14 @@
 </div>
 
 
-    <footer class="text-center">
-        <a href="/"> API Friends List|</button></a>
-        <a href="/"> Git Hub Repo</button></a>
-    </footer> 
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script type="text/javascript">
 // Capture the form inputs
 $("#submit").on("click", function(event) {
   event.preventDefault();
+
+  
   var newFriend={
     name: $("#name").val().trim(),
     photo: $("#photo").val().trim(),
@@ -220,19 +230,7 @@ $("#submit").on("click", function(event) {
       $("#q10").val("")
    
     });
-}); //closing on click function 
-
-// // runFriendsQuery(); 
-// //   function runFriendsQuery() {
-// //     var currentURL = window.location.origin; 
-// //     $.ajax({ url: currentURL + "/api/friends", method: "GET" })
-// //         .then(function(friendData) {
-// //       for(var i=0; i< friendData.length; i++){
-// //           console.log(friendData[i]);
-// //           console.log("-------------------"); 
-// //         }
-//       });
-//   }
+});
  
 </script>
 
