@@ -203,12 +203,14 @@ $("#submit").on("click", function(event) {
       $("#q8").val().trim(),
       $("#q9").val().trim(),
       $("#q10").val().trim(),
-    ] 
+    ]  
   }
-  // console.log(typeof(newFriend.scores[0])); 
+
+      
   var currentURL = window.location.origin; 
     $.post("/api/friends", newFriend, function(data){
-      console.log(data); 
+        
+    
       $('<img />').attr({
                   'src': data.photo,
                   'alt': 'Always Sunny Charactter',
@@ -228,16 +230,29 @@ $("#submit").on("click", function(event) {
       $("#q8").val(""),
       $("#q9").val(""),
       $("#q10").val("")
-   
+      //clear modal
     });
-});
+  });
+  
+
  
 </script>
 
 </html>
 
 
-
+// if(newFriend.name.length === 0){
+//           alert("Type your name!");
+//         }
+//       else if(newFriend.photo.lenght === 0){
+//         alert("Add a photo!");
+//       }
+//       else if (newFriend.scores == NaN){
+//       }
+//       else{
+//         post();
+//       }
+//     });
 
 
 

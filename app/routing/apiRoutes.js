@@ -7,7 +7,7 @@ module.exports = function(app){
 
   app.post('/api/friends', function(req, res){
     //variable that grabs my user score
-        var userData = req.body; 
+    var userData = req.body; 
 
 
     //variable that store the total of the user and friend score diference
@@ -34,6 +34,9 @@ module.exports = function(app){
    }
 // this variable run the index of smallest function referencing the total score array
    var bestMatchIndex = (indexOfSmallest(totalArray));
+//check user input
+   
+
    console.log(friendData[bestMatchIndex]); 
  
  //  add user input to friend Data 
