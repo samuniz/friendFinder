@@ -63,9 +63,9 @@ h3{
  footer a{
    color: black; 
  }
-/* #survey-header{
- ; 
-} */
+header #header img{
+  margin: 0 auto; 
+}
  #survey{
    background: black;
    background-repeat: no-repeat;
@@ -77,7 +77,7 @@ h3{
   }
 #submit, #home{
   width: 25%; 
-  margin: 2% 38%; 
+  margin: 1% 38%; 
  
   }
  #submit-footer{
