@@ -77,8 +77,8 @@ header #survey-header{
   }
 #submit, #home{
   width: 25%; 
-  margin: 0 38%; 
-  padding: 10%; 
+  margin: 38%; 
+ 
   }
  #submit-footer{
    margin-top: 5%; 
