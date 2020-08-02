@@ -63,7 +63,7 @@ h3{
  footer a{
    color: black; 
  }
-header .header{
+header #survey-header{
   background: url('../assets/images/header.png'); 
 }
  #survey{
@@ -78,6 +78,7 @@ header .header{
 #submit, #home{
   width: 25%; 
   margin: 0 38%; 
+  padding: 10%; 
   }
  #submit-footer{
    margin-top: 5%; 
