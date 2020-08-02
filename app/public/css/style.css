@@ -63,8 +63,8 @@ h3{
  footer a{
    color: black; 
  }
-header{
-  background: url("../assets/images/header.png");
+header .header{
+  background-image: url("../assets/images/header.png"); 
 }
  #survey{
    background: black;
