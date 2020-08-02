@@ -63,9 +63,8 @@ h3{
  footer a{
    color: black; 
  }
-header a{
-  width: 100%; 
-  margin: 0 auto; 
+header a img{
+  text-align: center;
 }
  #survey{
    background: black;
