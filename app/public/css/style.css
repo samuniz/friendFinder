@@ -75,7 +75,7 @@ header{
   option .select{
     color: black; 
   }
-#submit{
+#submit, #home{
   width: 25%; 
   margin: 0 38%; 
   }
