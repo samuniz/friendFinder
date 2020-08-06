@@ -64,7 +64,7 @@ h3{
    color: black; 
  }
 header a img{
-  text-align: center;
+  margin: 0 25%; 
 }
  #survey{
    background: black;

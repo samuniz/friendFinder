@@ -172,7 +172,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" >
         
       </div>
       <div class="modal-footer">
@@ -214,11 +214,10 @@ $("#submit").on("click", function(event) {
     $.post("/api/friends", newFriend, function(data){
         
     
-      $('<img />').attr({
-                  'src': data.photo,
-                  'alt': 'Always Sunny Charactter',
-        }).appendTo(".modal-body");
-      $("#modalLabel").append("<h3>"+ data.name + "</h3>");
+     
+      $("#modalLabel").html("<h3> Your match is "+ data.name + "</h3>");
+      $(".modal-body").html("<img class='img-fluid' src='" + data.photo + "'>"); 
+
       
       
       $("#name").val("");
@@ -242,15 +241,5 @@ $("#submit").on("click", function(event) {
 </script>
 
 </html>
-
-
-
-
-
-
-
-
-
-
 
 
