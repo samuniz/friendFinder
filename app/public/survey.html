@@ -184,15 +184,14 @@
 </div>
 
 
-</body>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script type="text/javascript">
 // Capture the form inputs
 $("#submit").on("click", function(event) {
-  event.preventDefault();
-
   
-  var newFriend={
+  // event.preventDefault();
+    var newFriend={
     name: $("#name").val().trim(),
     photo: $("#photo").val().trim(),
     scores:[
@@ -206,20 +205,23 @@ $("#submit").on("click", function(event) {
       $("#q8").val().trim(),
       $("#q9").val().trim(),
       $("#q10").val().trim(),
-    ]  
-  }
+    ]}; 
 
-      
-  var currentURL = window.location.origin; 
-    $.post("/api/friends", newFriend, function(data){
-        
-    
-     
+    if(newFriend.name === "" ){
+      $("#modalLabel").html("<h4>Error</h4>");
+      $(".modal-body").text("You must include your name !")  
+    }else if(newFriend.photo === ""){
+      $("#modalLabel").html("<h4>Error</h4>");
+      $(".modal-body").text("You must include your photo !")  
+    }
+    // else if(newFriend.scores === "" || newFriend.scores === NaN ){
+    //   $("#modalLabel").html("<h4>Error</h4>");
+    //   $(".modal-body").text("You must answer the questions !")  
+    // }
+    else{
+      $.post("/api/friends", newFriend, function(data){
       $("#modalLabel").html("<h3> Your match is "+ data.name + "</h3>");
       $(".modal-body").html("<img class='img-fluid' src='" + data.photo + "'>"); 
-
-      
-      
       $("#name").val("");
       $("#photo").val("")
       $("#q1").val(""),
@@ -234,12 +236,18 @@ $("#submit").on("click", function(event) {
       $("#q10").val("")
       //clear modal
     });
+
+    }
+    
+  
+
+    
   });
   
 
  
 </script>
-
+</body>
 </html>
 
 
