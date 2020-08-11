@@ -3,7 +3,6 @@ body{
   background-repeat: no-repeat;
   background-size: cover;
   font-family: 'Nunito', sans-serif;
-
   font-size: 25px; 
 }
 
@@ -40,7 +39,7 @@ h2{
   margin-right: 3%; 
 
 }
-.home{
+#home{
   color: black; 
 }
 h3{
@@ -49,6 +48,7 @@ h3{
 }
 
 .btn{
+  color: black; 
   background: darkorange;
   margin-left: 35%; 
 }
